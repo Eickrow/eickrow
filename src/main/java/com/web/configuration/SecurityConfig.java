@@ -3,7 +3,6 @@ package com.web.configuration;
 import com.web.service.security.LoginProcessHandler;
 import com.web.service.security.LoginSuccessHandler;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.encoding.Md5PasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -16,8 +15,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity webSecurity) throws Exception {
-        webSecurity.ignoring().antMatchers("/login");
+        webSecurity.ignoring()
+                .antMatchers("/css/**")
+                .antMatchers("/js/**")
+                .antMatchers("/fonts/**")
+                .antMatchers("/imgs/**")
+                .antMatchers("/login");
     }
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()

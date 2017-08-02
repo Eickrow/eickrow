@@ -22,11 +22,11 @@
         </encoder>
     </appender>
 
-    <root level="INFO">
+    <root level="TRACE">
         <appender-ref ref="console"/>
         <appender-ref ref="file"/>
     </root>
 
-    <logger name="com.aqdog.platformsapi" level="TRACE"/>
-    <logger name="MyBatis" level="DEBUG"/>
+    <logger name="com.web" level="TRACE"/>
+    <!--<logger name="MyBatis" level="DEBUG"/>-->
 </configuration>

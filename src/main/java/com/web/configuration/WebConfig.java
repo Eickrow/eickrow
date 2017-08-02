@@ -1,18 +1,14 @@
 package com.web.configuration;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
-import org.springframework.web.servlet.HandlerExceptionResolver;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.ViewResolver;
-import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 
 @Order(1)
@@ -25,6 +21,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/css/**").addResourceLocations("/WEB-INF/lib/css/");
         registry.addResourceHandler("/js/**").addResourceLocations("/WEB-INF/lib/js/");
+        registry.addResourceHandler("/fonts/**").addResourceLocations("/WEB-INF/lib/fonts/");
+        registry.addResourceHandler("/imgs/**").addResourceLocations("/WEB-INF/lib/imgs/");
     }
 
     @Override
@@ -36,7 +34,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void configureViewResolvers(ViewResolverRegistry registry) {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/views/");
-        viewResolver.setSuffix(".html");
+        viewResolver.setSuffix(".jsp");
         registry.viewResolver(viewResolver);
     }
 }
