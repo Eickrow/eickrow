@@ -1,3 +1,4 @@
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -15,6 +16,7 @@
             <div class="account-wall">
                 <img class="profile-img" src="/imgs/login_user_photo.png" alt="user_photo">
                 <form class="form-signin" action="/login_process" method="post">
+                    <security:csrfInput/>
                     <input type="text" name="login_user" class="form-control" placeholder="Username" required autofocus>
                     <input type="password" name="login_pwd" class="form-control" placeholder="Password" required>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">
